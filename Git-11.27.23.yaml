@@ -1,0 +1,158 @@
+Welcome to Git class
+
+Today's class is going to be all hands on
+
+Topic:
+=======
+
+Creating a Repository
+  - Create locally (using git init)
+  - Create remotely (GitHub.com)
+  - Create locally on GitHub Desktop
+Cloning a Repository 
+  - Public Repo to local 
+  - Private Repo to local
+Pushing Repository to remote
+
+
+
+- The name and email set up is to let people know who 
+- Check the current configuration 
+
+git config user.name #Blank output means nothing has been configured yet
+git config user.name #Blank output means nothing has been configured yet
+
+- To configure new user, use;
+#Make sure the configuration matches your usename and email on GitHub
+
+git config --global user.name <<username>>
+git config --global user.email <<email>>
+
+Repository
+==========
+
+A repo is the main place where we track changes on our file using git 
+
+- Let's explore an online repo called tenterflow and check out one of the python codes 
+tensorflow -->> python -->> estimator --> estimator.py 
+
+GitHub is getting better rendering codes. Which pretty mucg mean it shows syntax highligtin
+
+README
+-------
+This is the guide to the repository 
+
+Initiallizing repository
+------------------------
+
+git init #Create the the hidden file (.git) that manages the versioning of the repository
+         #If you continue to create files and folders under the initialzed directory, they also be tracked
+         #You want to absolutely avoid creating a repo inside of a repo. 
+         That means a tracking is been tracked. So if you have a folder that is already initialized,
+         dont git init inside of that folder again. It will work, but definitely a bad practice
+         #
+
+*** DO THIS ***
+- Make a new directorty under anywehere you choose
+mkdir <<yourname>>wannabee_repo
+cd <<your_new_directtory>>
+
+- Check if a repo exist in that repo
+git status #Not only does this shows us if a repo exist, but also it exist in the parent directory 
+
+- Now initialize the directory 
+git init #This will initialize the folder and create the .git file
+
+- Let's create a repo online.
+#Go to github and login to your account
+#Click on "New"
+#We are creating a public repo for now
+#Add a "README" file in our change
+#Git ignore is used to ignore files you don't want to track the changes.
+#There are licenses available for you depending on what repo you are creating, but we don't need to dive into that
+
+#You will notice that we have one commit, that is because of the README file
+
+Cloning Repository
+===================
+
+- Cloning a repository means copying the remote pository to our local machine
+- In you remote repo, click on "Code" on your repo #Below are the options to get a copy of your remote repo
+#You can download the zip foilder to your local
+#HTTPS, SSH, GitHUB cli are the options to run it from command line.
+#Now copy the HTTPS link of the repo
+
+- Change directory back to your parent directory of your local repo #Who can tell me why?
+- Now clone the new repo using;
+git clone <<repo_url>> #Let's clone the public repo
+
+- Now lets create a private repo. The difference here is that we are going to choose private instead of public
+git clone <<private_repo_url>>
+
+# You will notice that repository "Not Found". Well, it cant find it because it's private.
+# To be able to view this, we need to set up a token
+# There are 2 ways to do this. 
+- 1. Create Personal Access Token (PAT) on GihHub. When using the "git clone", reference the PAT
+- 2. Open the GitHub Desktop Tool, Login with your GitHud username and PW, clone the repo
+
+Option 1 (Using PAT to clone)
+------------------------------
+
+- Login to GitHub
+- Click on "Profile" (top right) --> Settings
+- Scroll down on the left panel (menu), Click on Developer Settings
+# Here you can set up GitHub Apps, OAth Apps, Personal Access Token
+- Click on Personal Acess Token, then clikc "Generate new token" on the top right
+- Follow the steps, and we only need to click on "repo"
+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
+git clone <<thhps://token@private_repo_url>>
+git clone <<thhps://token@private_repo_url>>
+git clone https://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@github.com/teyedevsecops/teyeonline-wannabe-private.git
+
+Getting Started With Git
+========================
+
+- Let's learn how to add code to this repository we have been working on. The git work Follow
+# There is an initial project, then we add more codes, and more to that.
+# A commit is a save point for every single file or directory. You can also just track a single file
+ 
+- Workin Area
+# When you initalize a "Working Directory" (working area) the .git file is created and tacking begings
+# If you add more files to that directory, it is not yet part of your repository, but git knows about it
+# That is why it is the working area
+ 
+ - Staging Area
+# When you use "git add " the the file or the entire folder is the added to the staging area 
+# It is not yet part of the repository yet
+
+- Repository
+git commit -m  <<filename>>
+# A commit is what records the changes or like a save button to the repositoty
+# This will work for new files or files that have changes 
+# The changes are saved in the .git file
+# If a file is not part of a repo, it cannot be pushed to remote
+
+- Pushing 
+git push # This will push the repository to remote repo. Remember online commited changes can be pushed to the remote repo
+
+- Viewing the .git file
+- Now let's show our .git file that we are going to be working on
+- Windows: File --> Preferences --> Settings (search settings for "files excluded")
+- MAc: Code --> Settings --> Settings (search settings for "files excluded")
+- Delete the .git pathern, but remember what you did there
+**/.git
+- Let's create a new folder called "LEARN_GIT" (Make sure this is not in a initialized directory)
+- Create a new file file called "test_file.txt"
+- Run "git status". It will tell you about the new file and the command to use for to add the it for tracking
+git add test_file.txt #This will add the file to start tracking
+- Run "git status" again. Now pay attention to the staging and unstaging message
+
+- Adding multiple files:
+- Let's create "test_file_2.txt" "test_file_3.txt" # You can already see on the vs code that there are uncommited files
+- Couple of ways to add multiple files
+git add <<filename 1>> <<filename 2>>
+git add <<filename 1>> <<folder 2/filename 2>>
+git add . #For all files in the folder 
+- The thing to note is that when your files are part of same stage, you will have to roll them back together 
+
+- Modify files:
